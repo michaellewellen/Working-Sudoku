@@ -5,8 +5,91 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sudoku_Game"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Sudoku" Background="Black"
+        SizeToContent="WidthAndHeight"
+        UseLayoutRounding="True" SnapsToDevicePixels="True"
+        TextOptions.TextFormattingMode="Display"
+        WindowStartupLocation="CenterScreen" >
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style TargetType="RadioButton">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Height" Value="44"/>
+        </Style>
+        <Style TargetType="GroupBox">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#777"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Padding" Value="6"/>
+            <Setter Property="Margin" Value="0,20,0,0"/>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="SUDOKU"
+                   Foreground="Red" FontSize="60"
+                   FontWeight="Bold" HorizontalAlignment="Center"
+                   Margin="0,10"/>
+    
+            <!-- Puzzle Size -->
+            <GroupBox Grid.Row="1" Header="Size" Margin="0,20,0,0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                    <RadioButton Content="4x4" GroupName="SizeGroup" Margin="10" x:Name="Size4" IsChecked="False"/>
+                    <RadioButton Content="6x6" GroupName="SizeGroup" Margin="10" x:Name="Size6" IsChecked="False"/>
+                    <RadioButton Content="8x8" GroupName="SizeGroup" Margin="10" x:Name="Size8" IsChecked="False"/>
+                    <RadioButton Content="9x9" GroupName="SizeGroup" Margin="10" x:Name="Size9" IsChecked="True"/>
+                    <RadioButton Content="12x12" GroupName="SizeGroup" Margin="10" x:Name="Size12" IsChecked="False"/>
+                    <RadioButton Content="16x16" GroupName="SizeGroup" Margin="10" x:Name="Size16" IsChecked="False" />
+                </StackPanel>
+            </GroupBox>
+
+            <!-- Puzzle Style-->
+            <GroupBox Grid.Row="2" Header="Style" Margin="0,20,0,0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                    <RadioButton x:Name="StyleTraditional"  Content="Traditional" GroupName="StyleGroup" Margin="10" IsChecked="True"/>
+                    <RadioButton x:Name="StyleJigsaw" Content="Jigsaw" GroupName="StyleGroup" Margin="10"/>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- Puzzle Difficulty -->
+            <GroupBox Grid.Row="3" Header="Difficulty" Margin="0,20,0,0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                    <RadioButton x:Name="DiffEasy" Content="Easy" GroupName="DiffGroup" Margin="10"/>
+                    <RadioButton x:Name="DiffMedium" Content="Medium" GroupName="DiffGroup" Margin="10" IsChecked="True"/>
+                    <RadioButton x:Name="DiffHard" Content="Hard" GroupName="DiffGroup" Margin="10"/>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- Generate Button -->
+            <StackPanel Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30,0,0">
+                <Button Content="Generate Puzzle"
+                    Width="200" Height="50"
+                    FontSize="16" FontWeight="Bold"
+                    Background="LightGray"
+                    Click="GeneratePuzzle_Click"/>
+                
+                <Button Content="View Stats"
+                    Width="200" Height="40"
+                    Margin="0,12,0,0"
+                    FontSize="14" FontWeight="Bold"
+                    Background="#2196F3"
+                    Click="ViewStats_Click"/>
+            </StackPanel>
+
 
     </Grid>
 </Window>
