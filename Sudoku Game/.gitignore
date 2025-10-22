@@ -2,6 +2,7 @@
 .vs/
 **/bin/
 **/obj/
+*.exe
 *.user
 *.suo
 *.userosscache
